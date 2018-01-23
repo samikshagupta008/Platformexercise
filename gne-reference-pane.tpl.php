@@ -4,7 +4,7 @@
  * GNE reference pane template file.
  *
  * @var $gne_reference string
- *   The product GNE reference value.
+ * The products GNE reference value.
  */
 ?>
 <?php if ($gne_reference): ?>
