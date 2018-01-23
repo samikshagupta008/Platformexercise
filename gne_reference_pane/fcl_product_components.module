@@ -196,6 +196,18 @@ function fcl_product_components_theme($existing, $type, $theme, $path) {
       'title_tag' => NULL,
     ),
   );
+
+  $return['gne_reference_pane'] = array(
+    'template' => 'gne-reference-pane',
+    'path' => $components_path . 'gne_reference_pane',
+    'file' => 'gne_reference_pane.inc',
+    'pattern' => 'gne_reference_pane__',
+    'variables' => array(
+      'product' => (object) [],
+      'title' => NULL,
+      'title_tag' => NULL,
+    ),
+  );
   return $return;
 }
 
@@ -347,7 +359,12 @@ function fcl_product_components_field_extra_fields() {
       'description' => t('SKU of the product.'),
       'weight' => 5,
     );
-   }
+    $return[$entity_type][$bundle]['display']['gne_reference_pane'] = array(
+      'label' => t('GNE Reference'),
+      'description' => t('GNE Reference of the product.'),
+      'weight' => 5,
+    );
+  }
 
   return $return;
 }
@@ -439,6 +456,10 @@ function fcl_product_components_fcl_procat_product_view($entity, $view_mode, $la
   );
   $entity->content['product_sku_pane'] = array(
     '#theme' => 'product_sku_pane',
+    '#product' => $entity,
+  );
+  $entity->content['gne_reference_pane'] = array(
+    '#theme' => 'gne_reference_pane',
     '#product' => $entity,
   );
 }
